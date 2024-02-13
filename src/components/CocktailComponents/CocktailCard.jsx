@@ -1,6 +1,13 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../features/cart/cartSlice'
 
 const CocktailCard = ({ cocktail }) => {
+  const dispatch = useDispatch()
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(cocktail))
+  }
   return (
     <div className='max-w-sm rounded overflow-hidden shadow-lg'>
       <img
@@ -26,6 +33,13 @@ const CocktailCard = ({ cocktail }) => {
           </span>
         ))}
       </div>
+      {/* Cocktail image and details */}
+      <button
+        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+        onClick={handleAddToCart}
+      >
+        Add to Cart
+      </button>
     </div>
   )
 }

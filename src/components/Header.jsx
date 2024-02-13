@@ -1,18 +1,11 @@
 import { Link } from 'react-router-dom'
+import { CartWrapper } from './CartComponents/CartWrapper'
 
 export const Header = () => {
   const links = [
     {
       text: 'Home',
       path: '/',
-    },
-    {
-      text: 'About',
-      path: '/about',
-    },
-    {
-      text: 'Contact',
-      path: '/contact',
     },
   ]
   return (
@@ -43,6 +36,9 @@ export const Header = () => {
                 {link.text}
               </Link>
             ))}
+            <div className='relative'>
+              <CartWrapper />
+            </div>
           </nav>
         </div>
       </header>
