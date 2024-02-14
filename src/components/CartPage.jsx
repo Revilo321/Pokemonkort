@@ -1,8 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { CartPageItemCard } from './CartPageItemCard'
+import { useNavigate } from 'react-router-dom'
 
 export const CartPage = () => {
+  const navigate = useNavigate()
   const cartItems = useSelector((state) => state.cart.items)
 
   const getTotalPrice = () => {
@@ -42,7 +44,10 @@ export const CartPage = () => {
                 <p className='mb-1 text-lg font-bold'>${getTotalPrice()}</p>
               </div>
             </div>
-            <button className='mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600'>
+            <button
+              onClick={() => navigate('/checkout')}
+              className='mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600'
+            >
               Check out
             </button>
           </div>

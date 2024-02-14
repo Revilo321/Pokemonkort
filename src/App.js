@@ -6,6 +6,8 @@ import { HomePage } from './components/HomePage'
 import { Header } from './components/Header'
 import { CocktailDetails } from './components/CocktailComponents/CocktailDetails'
 import { CartPage } from './components/CartPage'
+import { CheckoutPage } from './components/CheckoutComponents/CheckoutPage'
+import { ConfirmationPage } from './components/ConfirmationPage'
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path='/homepage' element={<HomePage />} />
           <Route path='/cocktail/:id' element={<CocktailDetails />} />
           <Route path='/cart' element={<CartPage />} />
+          <Route path='/checkout' element={<CheckoutPage />} />
+          <Route path='/confirmation' element={<ConfirmationPage />} />
         </Routes>
       </div>
     </Router>
