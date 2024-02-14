@@ -11,7 +11,7 @@ function App() {
       <div className='w-full h-full'>
         <Header />
         <Routes>
-          <Route path='/' element={<HomePage />} />
+          <Route path='/homepage' element={<HomePage />} />
         </Routes>
       </div>
     </Router>

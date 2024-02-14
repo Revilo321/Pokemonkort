@@ -9,7 +9,7 @@ const CocktailCard = ({ cocktail }) => {
     dispatch(addToCart(cocktail))
   }
   return (
-    <div className='max-w-sm rounded overflow-hidden shadow-lg'>
+    <div className='max-w-sm rounded overflow-hidden shadow-lg relative'>
       <img
         className='w-full'
         src={cocktail.strDrinkThumb}
@@ -23,7 +23,7 @@ const CocktailCard = ({ cocktail }) => {
             : ''}
         </p>
       </div>
-      <div className='px-6 pt-4 pb-2'>
+      <div className='px-6 pt-4 pb-12'>
         {cocktail.strTags?.split(',').map((tag) => (
           <span
             key={tag}
@@ -35,7 +35,7 @@ const CocktailCard = ({ cocktail }) => {
       </div>
       {/* Cocktail image and details */}
       <button
-        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded absolute bottom-2 left-5'
         onClick={handleAddToCart}
       >
         Add to Cart
