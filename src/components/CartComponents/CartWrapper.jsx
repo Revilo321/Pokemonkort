@@ -9,7 +9,7 @@ export const CartWrapper = () => {
       <div onClick={() => setShowDropdown(!showDropdown)}>
         <CartIcon />
       </div>
-      {showDropdown && <CartDropdown />}
+      {showDropdown && <CartDropdown setShowDropdown={setShowDropdown} />}
     </>
   )
 }

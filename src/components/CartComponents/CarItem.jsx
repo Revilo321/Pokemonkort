@@ -59,6 +59,7 @@ export const CartItem = ({ item }) => {
       </div>
       {showConfirmation && (
         <ConfirmationDialog
+          open={showConfirmation}
           onConfirm={confirmDeletion}
           onCancel={cancelDeletion}
           message='Are you sure you want to remove this item from the cart?'

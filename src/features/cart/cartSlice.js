@@ -38,6 +38,12 @@ export const cartSlice = createSlice({
         delete state.items[itemId]
       }
     },
+    deleteFromCart: (state, action) => {
+      const cocktailId = action.payload
+      if (state.items[cocktailId]) {
+        delete state.items[cocktailId]
+      }
+    },
   },
 })
 
@@ -46,6 +52,7 @@ export const {
   removeFromCart,
   incrementQuantity,
   decrementQuantity,
+  deleteFromCart,
 } = cartSlice.actions
 
 export default cartSlice.reducer

@@ -18,7 +18,6 @@ export const CocktailsGrid = () => {
   } else if (status === 'failed') {
     return <div>Error: {error}</div>
   }
-  console.log(cocktails)
 
   return (
     <div className='mx-auto'>

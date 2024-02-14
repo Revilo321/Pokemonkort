@@ -13,7 +13,19 @@ export const fetchCocktails = createAsyncThunk(
       'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
     )
     const data = await response.json()
-    return data.drinks
+    const cocktailsWithPricing = data.drinks.map((drink) => {
+      const priceToMake = parseFloat((Math.random() * 2 + 1).toFixed(2))
+      const sellingPrice = parseFloat(
+        (priceToMake + Math.random() * 3 + 0.5).toFixed(2)
+      )
+
+      return {
+        ...drink,
+        priceToMake,
+        sellingPrice,
+      }
+    })
+    return cocktailsWithPricing
   }
 )
 
