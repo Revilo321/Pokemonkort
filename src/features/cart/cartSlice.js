@@ -24,9 +24,28 @@ export const cartSlice = createSlice({
         delete state.items[cocktailId]
       }
     },
+    incrementQuantity: (state, action) => {
+      const itemId = action.payload
+      if (state.items[itemId]) {
+        state.items[itemId].quantity += 1
+      }
+    },
+    decrementQuantity: (state, action) => {
+      const itemId = action.payload
+      if (state.items[itemId] && state.items[itemId].quantity > 1) {
+        state.items[itemId].quantity -= 1
+      } else {
+        delete state.items[itemId]
+      }
+    },
   },
 })
 
-export const { addToCart, removeFromCart } = cartSlice.actions
+export const {
+  addToCart,
+  removeFromCart,
+  incrementQuantity,
+  decrementQuantity,
+} = cartSlice.actions
 
 export default cartSlice.reducer
