@@ -1,60 +1,60 @@
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux'
 import {
   decrementQuantity,
   incrementQuantity,
   removeFromCart,
-} from "../../features/cart/cartSlice";
-import { useState } from "react";
-import { ConfirmationDialog } from "../ConfirmationDialog";
+} from '../../features/cart/cartSlice'
+import { useState } from 'react'
+import { ConfirmationDialog } from '../ConfirmationDialog'
 
 export const CartItem = ({ item }) => {
-  const dispatch = useDispatch();
-  const [showConfirmation, setShowConfirmation] = useState(false);
+  const dispatch = useDispatch()
+  const [showConfirmation, setShowConfirmation] = useState(false)
 
   const handleIncrement = () => {
-    dispatch(incrementQuantity(item.data.idDrink));
-  };
+    dispatch(incrementQuantity(item.data.idDrink))
+  }
 
   const handleDecrement = () => {
     if (item.quantity === 1) {
-      setShowConfirmation(true);
+      setShowConfirmation(true)
     } else {
-      dispatch(decrementQuantity(item.data.idDrink));
+      dispatch(decrementQuantity(item.data.idDrink))
     }
-  };
+  }
 
   const confirmDeletion = () => {
-    dispatch(removeFromCart(item.data.idDrink));
-    setShowConfirmation(false);
-  };
+    dispatch(removeFromCart(item.data.idDrink))
+    setShowConfirmation(false)
+  }
 
   const cancelDeletion = () => {
-    setShowConfirmation(false);
-  };
+    setShowConfirmation(false)
+  }
 
   return (
-    <div className="flex items-center p-2 hover:bg-gray-100">
+    <div className='flex items-center p-2 hover:bg-gray-100 container mx-auto'>
       <img
         src={item.data.strDrinkThumb}
         alt={item.data.strDrink}
-        className="w-10 h-10 rounded-full"
+        className='w-10 h-10 rounded-full'
       />
-      <div className="ml-2 flex-grow">
-        <div className="text-sm font-medium">{item.data.strDrink}</div>
-        <div className="text-xs text-gray-600">Qty: {item.quantity}</div>
+      <div className='ml-2 flex-grow'>
+        <div className='text-sm font-medium'>{item.data.strDrink}</div>
+        <div className='text-xs text-gray-600'>Qty: {item.quantity}</div>
       </div>
-      <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-        <div className="flex items-center border-gray-200">
+      <div className='mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6'>
+        <div className='flex items-center border-gray-200'>
           <button
             onClick={() => handleDecrement(item.data.idDrink)}
-            className="cursor-pointer rounded-l bg-gray-200 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
+            className='cursor-pointer rounded-l bg-gray-200 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50'
           >
             -
           </button>
-          <p className="px-3">{item.quantity}</p>
+          <p className='px-3'>{item.quantity}</p>
           <button
             onClick={() => handleIncrement(item.data.idDrink)}
-            className="cursor-pointer rounded-r bg-gray-200 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
+            className='cursor-pointer rounded-r bg-gray-200 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50'
           >
             +
           </button>
@@ -65,9 +65,9 @@ export const CartItem = ({ item }) => {
           open={showConfirmation}
           onConfirm={confirmDeletion}
           onCancel={cancelDeletion}
-          message="Are you sure you want to remove this item from the cart?"
+          message='Are you sure you want to remove this item from the cart?'
         />
       )}
     </div>
-  );
-};
+  )
+}
