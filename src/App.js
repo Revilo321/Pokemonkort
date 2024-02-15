@@ -1,58 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from 'react'
+
+import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { HomePage } from './components/HomePage'
+import { Header } from './components/Header'
+import { CocktailDetails } from './components/CocktailComponents/CocktailDetails'
+import { CartPage } from './components/CartPage'
+import { CheckoutPage } from './components/CheckoutComponents/CheckoutPage'
+import { ConfirmationPage } from './components/ConfirmationPage'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className='w-full h-full'>
+        <Header />
+        <Routes>
+          <Route path='/homepage' element={<HomePage />} />
+          <Route path='/cocktail/:id' element={<CocktailDetails />} />
+          <Route path='/cart' element={<CartPage />} />
+          <Route path='/checkout' element={<CheckoutPage />} />
+          <Route path='/confirmation' element={<ConfirmationPage />} />
+        </Routes>
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
