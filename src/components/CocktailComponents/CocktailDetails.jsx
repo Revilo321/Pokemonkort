@@ -27,57 +27,72 @@ export const CocktailDetails = () => {
   }
 
   return (
-    <div className='px-10 py-32'>
-      <button
-        onClick={handleBack}
-        className='mb-4 px-4 py-2 bg-gray-300 text-black rounded'
-      >
-        Back
-      </button>
-      <h2 className='text-2xl font-bold'>{cocktail.strDrink}</h2>
-      <img
-        src={cocktail.strDrinkThumb}
-        alt={cocktail.strDrink}
-        className='w-full max-w-md'
-      />
-      <div className='my-4'>
-        <button
-          onClick={() => setActiveTab('ingredients')}
-          className={`px-4 py-2 ${
-            activeTab === 'ingredients' ? 'text-blue-600' : 'text-gray-600'
-          }`}
+    <div className='px-10 pt-40 md:flex'>
+      <div className='md:w-1/3'>
+        <svg
+          onClick={handleBack}
+          className='cursor-pointer h-6 w-6'
+          xmlns='http://www.w3.org/2000/svg'
+          fill='none'
+          viewBox='0 0 24 24'
+          strokeWidth='1.5'
+          stroke='currentColor'
         >
-          Ingredients
-        </button>
+          <path
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            d='M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18'
+          />
+        </svg>
+        <h2 className='text-2xl font-bold'>{cocktail.strDrink}</h2>
+        <img
+          src={cocktail.strDrinkThumb}
+          alt={cocktail.strDrink}
+          className='w-full max-w-lg'
+        />
+      </div>
+      <div className='pl-10 pb-10 relative'>
+        <div className='my-4'>
+          <button
+            onClick={() => setActiveTab('ingredients')}
+            className={`px-4 py-2 ${
+              activeTab === 'ingredients' ? 'text-blue-600' : 'text-gray-600'
+            }`}
+          >
+            Ingredients
+          </button>
+          <button
+            onClick={() => setActiveTab('instructions')}
+            className={`px-4 py-2 ${
+              activeTab === 'instructions' ? 'text-blue-600' : 'text-gray-600'
+            }`}
+          >
+            Instructions
+          </button>
+        </div>
+        <div className='px-4'>
+          {activeTab === 'ingredients' && (
+            <ul>
+              {Array.from(Array(15).keys()).map((index) => {
+                const ingredient = cocktail[`strIngredient${index + 1}`]
+                const measure = cocktail[`strMeasure${index + 1}`]
+                return ingredient ? (
+                  <li key={index}>{`${
+                    measure ? measure.trim() : ''
+                  } ${ingredient}`}</li>
+                ) : null
+              })}
+            </ul>
+          )}
+          {activeTab === 'instructions' && <p>{cocktail.strInstructions}</p>}
+        </div>
         <button
-          onClick={() => setActiveTab('instructions')}
-          className={`px-4 py-2 ${
-            activeTab === 'instructions' ? 'text-blue-600' : 'text-gray-600'
-          }`}
+          onClick={handleAddToCart}
+          className='mt-4 px-4 py-2 bg-blue-500 absolute bottom-0 text-white rounded hover:bg-blue-600'
         >
-          Instructions
+          Add to Cart
         </button>
       </div>
-      {activeTab === 'ingredients' && (
-        <ul>
-          {Array.from(Array(15).keys()).map((index) => {
-            const ingredient = cocktail[`strIngredient${index + 1}`]
-            const measure = cocktail[`strMeasure${index + 1}`]
-            return ingredient ? (
-              <li key={index}>{`${
-                measure ? measure.trim() : ''
-              } ${ingredient}`}</li>
-            ) : null
-          })}
-        </ul>
-      )}
-      {activeTab === 'instructions' && <p>{cocktail.strInstructions}</p>}
-      <button
-        onClick={handleAddToCart}
-        className='mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
-      >
-        Add to Cart
-      </button>
     </div>
   )
 }
