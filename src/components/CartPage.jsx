@@ -2,8 +2,11 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { CartPageItemCard } from './CartPageItemCard'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { AuthModal } from './Auth/AuthModal'
 
 export const CartPage = () => {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
   const navigate = useNavigate()
   const cartItems = useSelector((state) => state.cart.items)
 
@@ -18,6 +21,15 @@ export const CartPage = () => {
 
   if (Object.keys(cartItems).length === 0) {
     return <div>Your cart is empty</div>
+  }
+
+  const handleCheckout = () => {
+    const user = false
+    if (!user) {
+      setIsAuthModalOpen(true)
+    } else {
+      navigate('/checkout')
+    }
   }
 
   return (
@@ -45,11 +57,15 @@ export const CartPage = () => {
               </div>
             </div>
             <button
-              onClick={() => navigate('/checkout')}
+              onClick={() => handleCheckout()}
               className='mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600'
             >
               Check out
             </button>
+            <AuthModal
+              isOpen={isAuthModalOpen}
+              onClose={() => setIsAuthModalOpen(false)}
+            />
           </div>
         </div>
       </div>
