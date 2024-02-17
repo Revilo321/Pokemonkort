@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useSelector } from 'react-redux'
 import { CartPageItemCard } from './CartPageItemCard'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { AuthModal } from './Auth/AuthModal'
+import { AuthContext } from '../AuthProvider'
+import { BackButton } from './BackButton'
 
 export const CartPage = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
+  const { currentUser } = useContext(AuthContext)
   const navigate = useNavigate()
   const cartItems = useSelector((state) => state.cart.items)
 
@@ -24,8 +27,7 @@ export const CartPage = () => {
   }
 
   const handleCheckout = () => {
-    const user = false
-    if (!user) {
+    if (!currentUser) {
       setIsAuthModalOpen(true)
     } else {
       navigate('/checkout')
@@ -34,7 +36,10 @@ export const CartPage = () => {
 
   return (
     <div className='bg-gray-100 pt-32'>
-      <div className='h-screen pt-20'>
+      <div className='pt-20'>
+        <div className='max-w-5xl mx-auto px-5'>
+          <BackButton />
+        </div>
         <h1 className='mb-10 text-center text-2xl font-bold'>Cart Items</h1>
         <div className='mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0'>
           <div className='rounded-lg md:w-2/3'>

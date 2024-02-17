@@ -39,6 +39,7 @@ export const CartPageItemCard = ({ item }) => {
   return (
     <div className='justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start relative'>
       <img
+        className='rounded-md'
         src={item.data.strDrinkThumb}
         alt={item.data.strDrink}
         style={{ width: '100px' }}

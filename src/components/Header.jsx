@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import { CartWrapper } from './CartComponents/CartWrapper'
 import { AuthModal } from './Auth/AuthModal'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { AuthContext } from '../AuthProvider'
 
 export const Header = () => {
+  const { currentUser } = useContext(AuthContext)
   const [authModalOpen, setIsAuthModalOpen] = useState(false)
   const links = [
     {
@@ -29,7 +31,7 @@ export const Header = () => {
               </Link>
             ))}
             <button onClick={() => setIsAuthModalOpen(true)} className='pr-5'>
-              Log ind
+              {!currentUser ? 'Log ind' : 'Log ud'}
             </button>
             <AuthModal
               isOpen={authModalOpen}
