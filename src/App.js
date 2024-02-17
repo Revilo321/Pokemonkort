@@ -10,6 +10,7 @@ import { CheckoutPage } from './components/CheckoutComponents/CheckoutPage'
 import { ConfirmationPage } from './components/ConfirmationPage'
 import { AuthProvider } from './AuthProvider'
 import { Toaster } from 'sonner'
+import { DashboardPage } from './components/Dashboard/DashboardPage'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path='/cart' element={<CartPage />} />
             <Route path='/checkout' element={<CheckoutPage />} />
             <Route path='/confirmation' element={<ConfirmationPage />} />
+            <Route path='/dashboard' element={<DashboardPage />} />
           </Routes>
         </div>
       </Router>
