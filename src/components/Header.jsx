@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
 import { CartWrapper } from './CartComponents/CartWrapper'
+import { AuthModal } from './Auth/AuthModal'
+import { useState } from 'react'
 
 export const Header = () => {
+  const [authModalOpen, setIsAuthModalOpen] = useState(false)
   const links = [
     {
       text: 'Home',
@@ -25,6 +28,13 @@ export const Header = () => {
                 {link.text}
               </Link>
             ))}
+            <button onClick={() => setIsAuthModalOpen(true)} className='pr-5'>
+              Log ind
+            </button>
+            <AuthModal
+              isOpen={authModalOpen}
+              onClose={() => setIsAuthModalOpen(false)}
+            />
             <div className='relative'>
               <CartWrapper />
             </div>

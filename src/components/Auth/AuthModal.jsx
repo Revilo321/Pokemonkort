@@ -29,7 +29,11 @@ export const AuthModal = ({ isOpen, onClose }) => {
             Register
           </button>
         </div>
-        {activeTab === 'login' ? <LoginForm /> : <RegisterForm />}
+        {activeTab === 'login' ? (
+          <LoginForm onClose={onClose} />
+        ) : (
+          <RegisterForm />
+        )}
       </div>
     </div>
   )

@@ -2,10 +2,7 @@ import { useSelector } from 'react-redux'
 
 export const CartIcon = () => {
   const cartItems = useSelector((state) => state.cart.items)
-  const totalItems = Object.values(cartItems).reduce(
-    (total, item) => total + item.quantity,
-    0
-  )
+  const totalItems = Object.keys(cartItems).length
 
   return (
     <div className='cursor-pointer'>

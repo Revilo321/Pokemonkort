@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { addToCart } from '../../features/cart/cartSlice'
+import { addToCartAsync } from '../../features/cart/cartSlice'
 import { selectCocktails } from '../../features/cocktails/cocktailSlice'
 
 export const CocktailDetails = () => {
@@ -19,7 +19,7 @@ export const CocktailDetails = () => {
   }
 
   const handleAddToCart = () => {
-    dispatch(addToCart(cocktail))
+    dispatch(addToCartAsync(cocktail))
   }
 
   const handleBack = () => {
