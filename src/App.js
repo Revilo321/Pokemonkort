@@ -9,12 +9,14 @@ import { CartPage } from './components/CartPage'
 import { CheckoutPage } from './components/CheckoutComponents/CheckoutPage'
 import { ConfirmationPage } from './components/ConfirmationPage'
 import { AuthProvider } from './AuthProvider'
+import { Toaster } from 'sonner'
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <div className='w-full h-full'>
+          <Toaster richColors />
           <Header />
           <Routes>
             <Route path='/homepage' element={<HomePage />} />

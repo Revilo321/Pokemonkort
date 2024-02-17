@@ -1,55 +1,41 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../features/cart/cartSlice";
-import { Link, useNavigate } from "react-router-dom";
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../features/cart/cartSlice'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
 
 const CocktailCard = ({ cocktail }) => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-  const handleAddToCart = () => {
-    dispatch(addToCart(cocktail));
-  };
+  const handleAddToCart = (e) => {
+    dispatch(addToCart(cocktail))
+    toast.success('The cocktail was added to your cart!')
+  }
   return (
-    <div
-      onClick={() => navigate(`/cocktail/${cocktail.idDrink}`)}
-      className="max-w-sm rounded overflow-hidden h-full shadow-lg cursor-pointer"
-    >
+    <div className='max-w-sm rounded overflow-hidden h-full shadow-lg cursor-pointer relative group'>
       <img
-        className="w-full"
+        onClick={() => navigate(`/cocktail/${cocktail.idDrink}`)}
+        className='w-full'
         src={cocktail.strDrinkThumb}
         alt={cocktail.strDrink}
       />
-      {/* <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{cocktail.strDrink}</div>
-        <p className="text-gray-700 text-base">
-          {cocktail.strInstructions
-            ? cocktail.strInstructions.substring(0, 100) + "..."
-            : ""}
-        </p>
-      </div>
-      <div className="px-6 pt-4 pb-12">
-        {cocktail.strTags?.split(",").map((tag) => (
-          <span
-            key={tag}
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-          >
-            #{tag}
-          </span>
-        ))}
-      </div>
-      <p>Price: {cocktail.sellingPrice}$</p>
-      <div className="">
+      <div className='absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded mb-2 w-full'
           onClick={handleAddToCart}
         >
           Add to Cart
         </button>
-        <Link to={`/cocktail/${cocktail.idDrink}`}>See details</Link>
-      </div> */}
+        <Link
+          to={`/cocktail/${cocktail.idDrink}`}
+          className='text-white hover:underline block text-center'
+        >
+          See Details
+        </Link>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default CocktailCard;
+export default CocktailCard

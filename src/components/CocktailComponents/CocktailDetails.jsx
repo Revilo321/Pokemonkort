@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { addToCartAsync } from '../../features/cart/cartSlice'
 import { selectCocktails } from '../../features/cocktails/cocktailSlice'
+import { toast } from 'sonner'
 
 export const CocktailDetails = () => {
   const { id } = useParams()
@@ -20,6 +21,7 @@ export const CocktailDetails = () => {
 
   const handleAddToCart = () => {
     dispatch(addToCartAsync(cocktail))
+    toast.success('The cocktail was added to your cart!')
   }
 
   const handleBack = () => {
