@@ -20,8 +20,6 @@ export const RegisterForm = () => {
       await setDoc(doc(db, 'users', user.uid), {
         email: email,
       })
-
-      console.log('User registered and added to Firestore:')
     } catch (error) {
       console.error('Registration failed:', error.message)
     }

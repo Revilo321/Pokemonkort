@@ -19,18 +19,15 @@ export const LoginForm = ({ onClose }) => {
       await signInWithEmailAndPassword(auth, email, password)
       await mergeCarts(auth.currentUser.uid, cartItems, dispatch)
       onClose()
-      console.log('login success')
     } catch (error) {
       console.error('Login failed:', error.message)
     }
-    console.log('Login submitted with:', email, password)
   }
 
   const handleLogout = async () => {
     try {
       await signOut(auth)
-      // Clear the local cart state after logout
-      dispatch(clearCart()) // Assuming clearCart is an action to reset the cart state
+      dispatch(clearCart())
     } catch (error) {
       console.error('Error signing out:', error)
     }

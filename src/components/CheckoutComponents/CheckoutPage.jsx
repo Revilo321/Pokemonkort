@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { BackButton } from '../BackButton'
-import { addDoc, doc, setDoc, collection } from 'firebase/firestore'
+import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../../firebase'
 import { AuthContext } from '../../AuthProvider'
 
