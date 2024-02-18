@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux'
 import {
-  decrementQuantity,
-  incrementQuantity,
-  deleteFromCart,
+  incrementQuantityAsync,
+  decrementQuantityAsync,
+  deleteFromCartAsync,
 } from '../features/cart/cartSlice'
 import { useState } from 'react'
 import { ConfirmationDialog } from './ConfirmationDialog'
@@ -12,19 +12,19 @@ export const CartPageItemCard = ({ item }) => {
   const [showConfirmation, setShowConfirmation] = useState(false)
 
   const handleIncrement = (idDrink) => {
-    dispatch(incrementQuantity(idDrink))
+    dispatch(incrementQuantityAsync(idDrink))
   }
 
   const handleDecrement = () => {
     if (item.quantity === 1) {
       setShowConfirmation(true)
     } else {
-      dispatch(decrementQuantity(item.data.idDrink))
+      dispatch(decrementQuantityAsync(item.data.idDrink))
     }
   }
 
   const confirmDeletion = () => {
-    dispatch(deleteFromCart(item.data.idDrink))
+    dispatch(deleteFromCartAsync(item.data.idDrink))
     setShowConfirmation(false)
   }
 
@@ -39,6 +39,7 @@ export const CartPageItemCard = ({ item }) => {
   return (
     <div className='justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start relative'>
       <img
+        className='rounded-md'
         src={item.data.strDrinkThumb}
         alt={item.data.strDrink}
         style={{ width: '100px' }}

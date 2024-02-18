@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useSelector } from 'react-redux'
 import { CartPageItemCard } from './CartPageItemCard'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { AuthModal } from './Auth/AuthModal'
+import { AuthContext } from '../AuthProvider'
+import { BackButton } from './BackButton'
 
 export const CartPage = () => {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
+  const { currentUser } = useContext(AuthContext)
   const navigate = useNavigate()
   const cartItems = useSelector((state) => state.cart.items)
 
@@ -20,9 +26,20 @@ export const CartPage = () => {
     return <div>Your cart is empty</div>
   }
 
+  const handleCheckout = () => {
+    if (!currentUser) {
+      setIsAuthModalOpen(true)
+    } else {
+      navigate('/checkout')
+    }
+  }
+
   return (
     <div className='bg-gray-100 pt-32'>
-      <div className='h-screen pt-20'>
+      <div className='pt-20'>
+        <div className='max-w-5xl mx-auto px-5'>
+          <BackButton />
+        </div>
         <h1 className='mb-10 text-center text-2xl font-bold'>Cart Items</h1>
         <div className='mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0'>
           <div className='rounded-lg md:w-2/3'>
@@ -45,11 +62,15 @@ export const CartPage = () => {
               </div>
             </div>
             <button
-              onClick={() => navigate('/checkout')}
+              onClick={() => handleCheckout()}
               className='mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600'
             >
               Check out
             </button>
+            <AuthModal
+              isOpen={isAuthModalOpen}
+              onClose={() => setIsAuthModalOpen(false)}
+            />
           </div>
         </div>
       </div>

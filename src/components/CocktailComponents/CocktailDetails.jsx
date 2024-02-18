@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
-import { addToCart } from '../../features/cart/cartSlice'
+import { useParams } from 'react-router-dom'
+import { addToCartAsync } from '../../features/cart/cartSlice'
 import { selectCocktails } from '../../features/cocktails/cocktailSlice'
+import { toast } from 'sonner'
+import { BackButton } from '../BackButton'
 
 export const CocktailDetails = () => {
   const { id } = useParams()
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const cocktails = useSelector(selectCocktails)
   const cocktail = cocktails.cocktails.find(
@@ -19,31 +20,14 @@ export const CocktailDetails = () => {
   }
 
   const handleAddToCart = () => {
-    dispatch(addToCart(cocktail))
-  }
-
-  const handleBack = () => {
-    navigate(-1)
+    dispatch(addToCartAsync(cocktail))
+    toast.success('The cocktail was added to your cart!')
   }
 
   return (
     <div className='px-10 pt-40 md:flex'>
       <div className='md:w-1/3'>
-        <svg
-          onClick={handleBack}
-          className='cursor-pointer h-6 w-6'
-          xmlns='http://www.w3.org/2000/svg'
-          fill='none'
-          viewBox='0 0 24 24'
-          strokeWidth='1.5'
-          stroke='currentColor'
-        >
-          <path
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            d='M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18'
-          />
-        </svg>
+        <BackButton />
         <h2 className='text-2xl font-bold'>{cocktail.strDrink}</h2>
         <img
           src={cocktail.strDrinkThumb}

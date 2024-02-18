@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux'
 import {
-  decrementQuantity,
-  incrementQuantity,
-  removeFromCart,
+  decrementQuantityAsync,
+  deleteFromCartAsync,
+  incrementQuantityAsync,
 } from '../../features/cart/cartSlice'
 import { useState } from 'react'
 import { ConfirmationDialog } from '../ConfirmationDialog'
@@ -12,19 +12,19 @@ export const CartItem = ({ item }) => {
   const [showConfirmation, setShowConfirmation] = useState(false)
 
   const handleIncrement = () => {
-    dispatch(incrementQuantity(item.data.idDrink))
+    dispatch(incrementQuantityAsync(item.data.idDrink))
   }
 
   const handleDecrement = () => {
     if (item.quantity === 1) {
       setShowConfirmation(true)
     } else {
-      dispatch(decrementQuantity(item.data.idDrink))
+      dispatch(decrementQuantityAsync(item.data.idDrink))
     }
   }
 
   const confirmDeletion = () => {
-    dispatch(removeFromCart(item.data.idDrink))
+    dispatch(deleteFromCartAsync(item.data.idDrink))
     setShowConfirmation(false)
   }
 
