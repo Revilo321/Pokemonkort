@@ -20,7 +20,7 @@ function App() {
           <Toaster richColors />
           <Header />
           <Routes>
-            <Route path='/homepage' element={<HomePage />} />
+            <Route path='/' element={<HomePage />} />
             <Route path='/cocktail/:id' element={<CocktailDetails />} />
             <Route path='/cart' element={<CartPage />} />
             <Route path='/checkout' element={<CheckoutPage />} />

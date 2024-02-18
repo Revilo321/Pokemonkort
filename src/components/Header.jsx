@@ -18,7 +18,7 @@ export const Header = () => {
       <header className='bg-white body-font shadow-md mt-2 rounded-lg w-11/12 absolute top-5'>
         <div className='mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center'>
           <Link
-            to='/homepage'
+            to='/'
             className='flex title-font font-medium items-center text-black'
           >
             <img alt='logo' className='h-16 w-16' src='iconlogo.png'></img>
