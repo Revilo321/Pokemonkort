@@ -44,8 +44,8 @@ export const CartPage = () => {
         <div className='mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0'>
           <div className='rounded-lg md:w-2/3'>
             <div>
-              {Object.values(cartItems).map((item) => {
-                return <CartPageItemCard key={item.idDrink} item={item} />
+              {Object.values(cartItems).map((item, idx) => {
+                return <CartPageItemCard key={idx} item={item} />
               })}
             </div>
           </div>

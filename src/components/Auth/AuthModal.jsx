@@ -8,7 +8,7 @@ export const AuthModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null
 
   return (
-    <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center'>
+    <div className='fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center'>
       <div className='bg-white p-4 rounded-lg'>
         <div className='flex justify-end'>
           <button onClick={onClose}>X</button>

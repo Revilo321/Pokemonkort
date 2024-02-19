@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { BackButton } from '../BackButton'
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../../firebase'
 import { AuthContext } from '../../AuthProvider'
+import { clearCart } from '../../features/cart/cartSlice'
 
 export const CheckoutPage = () => {
+  const dispatch = useDispatch()
   const cartItems = useSelector((state) => state.cart.items)
   const { currentUser } = useContext(AuthContext)
   const [customerInfo, setCustomerInfo] = useState({
@@ -61,7 +63,7 @@ export const CheckoutPage = () => {
     }
     try {
       const docRef = await addDoc(collection(db, 'orders'), order)
-
+      dispatch(clearCart())
       navigate('/confirmation', { state: { orderId: docRef.id, ...order } })
     } catch (error) {
       console.error('Error placing order: ', error)

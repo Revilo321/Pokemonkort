@@ -35,11 +35,11 @@ export const CocktailDetails = () => {
           className='w-full max-w-lg'
         />
       </div>
-      <div className='pl-10 pb-10 relative'>
+      <div className='md:pl-10 pb-10 relative md:w-2/3'>
         <div className='my-4'>
           <button
             onClick={() => setActiveTab('ingredients')}
-            className={`px-4 py-2 ${
+            className={` pr-4 py-2 ${
               activeTab === 'ingredients' ? 'text-blue-600' : 'text-gray-600'
             }`}
           >
@@ -47,7 +47,7 @@ export const CocktailDetails = () => {
           </button>
           <button
             onClick={() => setActiveTab('instructions')}
-            className={`px-4 py-2 ${
+            className={`py-2 ${
               activeTab === 'instructions' ? 'text-blue-600' : 'text-gray-600'
             }`}
           >
@@ -70,12 +70,15 @@ export const CocktailDetails = () => {
           )}
           {activeTab === 'instructions' && <p>{cocktail.strInstructions}</p>}
         </div>
-        <button
-          onClick={handleAddToCart}
-          className='mt-4 px-4 py-2 bg-blue-500 absolute bottom-0 text-white rounded hover:bg-blue-600'
-        >
-          Add to Cart
-        </button>
+        <div className='md:absolute bottom-0 pt-5'>
+          <p>Price: ${cocktail.sellingPrice}</p>
+          <button
+            onClick={handleAddToCart}
+            className='mt-4 px-4 py-2 bg-blue-500  text-white rounded hover:bg-blue-600'
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   )
