@@ -70,6 +70,9 @@ export const CartPage = () => {
             <AuthModal
               isOpen={isAuthModalOpen}
               onClose={() => setIsAuthModalOpen(false)}
+              message={
+                'You need to log in to be able to continue with your checkout, you can log in to an existing account or register as a new user'
+              }
             />
           </div>
         </div>
