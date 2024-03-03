@@ -35,7 +35,7 @@ const cocktailsSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchCocktails.pending, (state, action) => {
+      .addCase(fetchCocktails.pending, (state) => {
         state.status = 'loading'
       })
       .addCase(fetchCocktails.fulfilled, (state, action) => {

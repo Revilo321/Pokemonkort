@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { BackButton } from '../BackButton'
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../../firebase'
 import { AuthContext } from '../../AuthProvider'
+import { clearCart } from '../../features/cart/cartSlice'
 
 export const CheckoutPage = () => {
+  const dispatch = useDispatch()
   const cartItems = useSelector((state) => state.cart.items)
   const { currentUser } = useContext(AuthContext)
   const [customerInfo, setCustomerInfo] = useState({
@@ -61,7 +63,7 @@ export const CheckoutPage = () => {
     }
     try {
       const docRef = await addDoc(collection(db, 'orders'), order)
-
+      dispatch(clearCart())
       navigate('/confirmation', { state: { orderId: docRef.id, ...order } })
     } catch (error) {
       console.error('Error placing order: ', error)
@@ -70,10 +72,10 @@ export const CheckoutPage = () => {
 
   return (
     <div className='pt-52'>
-      <div className='max-w-7xl mx-auto'>
+      <div className='max-w-5xl px-5 mx-auto'>
         <BackButton />
       </div>
-      <div className='max-w-7xl mx-auto my-10 grid grid-cols-1 md:grid-cols-3 gap-4'>
+      <div className='max-w-5xl px-5 mx-auto my-10 grid grid-cols-1 md:grid-cols-3 gap-4'>
         <div className=' px-6 md:col-span-2'>
           <h2 className='text-2xl font-semibold mb-4'>Review Your Order</h2>
           <div className='text-right font-bold mt-4'>

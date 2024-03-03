@@ -99,16 +99,17 @@ export const DashboardPage = () => {
   ]
 
   return (
-    <div className='max-w-4xl mx-auto px-4 pt-52 pb-8'>
+    <div className='max-w-4xl mx-auto px-6 pt-40 pb-20'>
       <h1 className='text-2xl font-semibold text-gray-800 mb-6'>Dashboard</h1>
       <div className='mb-6'>
+        <p>Date</p>
         <DatePicker
           selected={selectedDate}
           onChange={(date) => setSelectedDate(date)}
           className='p-2 border rounded-md'
         />
       </div>
-      <div className='bg-white shadow rounded-lg p-6'>
+      <div className='bg-white rounded-lg pb-10'>
         <h2 className='text-xl font-medium text-gray-700 mb-4'>
           Summary for {selectedDate.toLocaleDateString()}
         </h2>

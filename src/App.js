@@ -11,6 +11,7 @@ import { ConfirmationPage } from './components/ConfirmationPage'
 import { AuthProvider } from './AuthProvider'
 import { Toaster } from 'sonner'
 import { DashboardPage } from './components/Dashboard/DashboardPage'
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 function App() {
   return (
@@ -23,9 +24,30 @@ function App() {
             <Route path='/' element={<HomePage />} />
             <Route path='/cocktail/:id' element={<CocktailDetails />} />
             <Route path='/cart' element={<CartPage />} />
-            <Route path='/checkout' element={<CheckoutPage />} />
-            <Route path='/confirmation' element={<ConfirmationPage />} />
-            <Route path='/dashboard' element={<DashboardPage />} />
+            <Route
+              path='/checkout'
+              element={
+                <ProtectedRoute>
+                  <CheckoutPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/confirmation'
+              element={
+                <ProtectedRoute>
+                  <ConfirmationPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/dashboard'
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </div>
       </Router>

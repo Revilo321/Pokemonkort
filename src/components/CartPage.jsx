@@ -35,8 +35,8 @@ export const CartPage = () => {
   }
 
   return (
-    <div className='bg-gray-100 pt-32'>
-      <div className='pt-20'>
+    <div className='min-h-screen bg-gray-100 pt-32'>
+      <div className='pt-5'>
         <div className='max-w-5xl mx-auto px-5'>
           <BackButton />
         </div>
@@ -44,8 +44,8 @@ export const CartPage = () => {
         <div className='mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0'>
           <div className='rounded-lg md:w-2/3'>
             <div>
-              {Object.values(cartItems).map((item) => {
-                return <CartPageItemCard key={item.idDrink} item={item} />
+              {Object.values(cartItems).map((item, idx) => {
+                return <CartPageItemCard key={idx} item={item} />
               })}
             </div>
           </div>
@@ -70,6 +70,9 @@ export const CartPage = () => {
             <AuthModal
               isOpen={isAuthModalOpen}
               onClose={() => setIsAuthModalOpen(false)}
+              message={
+                'You need to log in to be able to continue with your checkout, you can log in to an existing account or register as a new user'
+              }
             />
           </div>
         </div>

@@ -6,20 +6,25 @@ export const AuthContext = React.createContext()
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCurrentUser(user)
-      } else {
-        setCurrentUser(null)
-      }
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setCurrentUser(currentUser)
+      setLoading(false)
     })
-  }, [currentUser])
+
+    return () => {
+      unsubscribe()
+    }
+  }, [])
+
+  const authValue = {
+    currentUser,
+    loading,
+  }
 
   return (
-    <AuthContext.Provider value={{ currentUser }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
   )
 }
