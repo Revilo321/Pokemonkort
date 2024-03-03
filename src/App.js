@@ -24,8 +24,22 @@ function App() {
             <Route path='/' element={<HomePage />} />
             <Route path='/cocktail/:id' element={<CocktailDetails />} />
             <Route path='/cart' element={<CartPage />} />
-            <Route path='/checkout' element={<CheckoutPage />} />
-            <Route path='/confirmation' element={<ConfirmationPage />} />
+            <Route
+              path='/checkout'
+              element={
+                <ProtectedRoute>
+                  <CheckoutPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/confirmation'
+              element={
+                <ProtectedRoute>
+                  <ConfirmationPage />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path='/dashboard'
               element={
