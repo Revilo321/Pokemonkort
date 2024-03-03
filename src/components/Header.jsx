@@ -19,8 +19,7 @@ export const Header = () => {
         <div className='mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center'>
           <Link
             to='/'
-            className='flex title-font font-medium items-center text-black'
-          >
+            className='flex title-font font-medium items-center text-black'>
             <img alt='logo' className='h-16 w-16' src='iconlogo.png'></img>
             <span className='ml-3 text-xl'>Cocktails</span>
           </Link>
@@ -31,7 +30,7 @@ export const Header = () => {
               </Link>
             ))}
             <button onClick={() => setIsAuthModalOpen(true)} className='pr-5'>
-              {!currentUser ? 'Log ind' : 'Log ud'}
+              {!currentUser ? 'Login' : 'Sign out'}
             </button>
             <AuthModal
               isOpen={authModalOpen}
