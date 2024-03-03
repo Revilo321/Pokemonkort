@@ -35,8 +35,8 @@ export const CartPage = () => {
   }
 
   return (
-    <div className='bg-gray-100 pt-32'>
-      <div className='pt-20'>
+    <div className='min-h-screen bg-gray-100 pt-32'>
+      <div className='pt-5'>
         <div className='max-w-5xl mx-auto px-5'>
           <BackButton />
         </div>

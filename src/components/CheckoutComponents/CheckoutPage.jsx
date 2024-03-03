@@ -72,10 +72,10 @@ export const CheckoutPage = () => {
 
   return (
     <div className='pt-52'>
-      <div className='max-w-7xl mx-auto'>
+      <div className='max-w-5xl px-5 mx-auto'>
         <BackButton />
       </div>
-      <div className='max-w-7xl mx-auto my-10 grid grid-cols-1 md:grid-cols-3 gap-4'>
+      <div className='max-w-5xl px-5 mx-auto my-10 grid grid-cols-1 md:grid-cols-3 gap-4'>
         <div className=' px-6 md:col-span-2'>
           <h2 className='text-2xl font-semibold mb-4'>Review Your Order</h2>
           <div className='text-right font-bold mt-4'>
