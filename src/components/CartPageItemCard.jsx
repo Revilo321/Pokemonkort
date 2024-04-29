@@ -11,20 +11,20 @@ export const CartPageItemCard = ({ item }) => {
   const dispatch = useDispatch()
   const [showConfirmation, setShowConfirmation] = useState(false)
 
-  const handleIncrement = (idDrink) => {
-    dispatch(incrementQuantityAsync(idDrink))
+  const handleIncrement = (id) => {
+    dispatch(incrementQuantityAsync(id))
   }
 
   const handleDecrement = () => {
     if (item.quantity === 1) {
       setShowConfirmation(true)
     } else {
-      dispatch(decrementQuantityAsync(item.data.idDrink))
+      dispatch(decrementQuantityAsync(item.data.id))
     }
   }
 
   const confirmDeletion = () => {
-    dispatch(deleteFromCartAsync(item.data.idDrink))
+    dispatch(deleteFromCartAsync(item.data.id))
     setShowConfirmation(false)
   }
 
@@ -33,24 +33,24 @@ export const CartPageItemCard = ({ item }) => {
   }
 
   const getTotalItemPrice = () => {
-    return (item.quantity * item.data.sellingPrice).toFixed(2)
+    return (item.quantity * item.data.price).toFixed(2)
   }
 
   return (
     <div className='justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start relative'>
       <img
         className='rounded-md'
-        src={item.data.strDrinkThumb}
-        alt={item.data.strDrink}
+        src={item.data.image}
+        alt={item.data.name}
         style={{ width: '100px' }}
       />
       <div className='sm:ml-4 sm:flex sm:w-full sm:justify-between'>
         <div className='mt-5 sm:mt-0'>
           <h2 className='text-lg font-bold text-gray-900'>
-            {item.data.strDrink}
+            {item.data.name}
           </h2>
           <p className='mt-1 text-xs text-gray-700'>
-            {item.data.strInstructions}
+            {item.data.description}
           </p>
         </div>
         <div className='mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6'>
@@ -59,14 +59,14 @@ export const CartPageItemCard = ({ item }) => {
           </div>
           <div className='flex items-center border-gray-100'>
             <button
-              onClick={() => handleDecrement(item.data.idDrink)}
+              onClick={() => handleDecrement(item.data.id)}
               className='cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50'
             >
               -
             </button>
             <p className='px-3'>{item.quantity}</p>
             <button
-              onClick={() => handleIncrement(item.data.idDrink)}
+              onClick={() => handleIncrement(item.data.id)}
               className='cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50'
             >
               +

@@ -12,6 +12,7 @@ import { AuthProvider } from './AuthProvider'
 import { Toaster } from 'sonner'
 import { DashboardPage } from './components/Dashboard/DashboardPage'
 import { ProtectedRoute } from './components/ProtectedRoute'
+import { PokemonDetails } from './components/PokemonCards/PokemonDetails'
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/cocktail/:id' element={<CocktailDetails />} />
+            <Route path='/card/:id' element={<PokemonDetails />} />
             <Route path='/cart' element={<CartPage />} />
             <Route
               path='/checkout'

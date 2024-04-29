@@ -17,7 +17,7 @@ import {
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart', 'cocktails'],
+  whitelist: ['cart', 'card'],
 }
 
 const rootReducer = combineReducers({

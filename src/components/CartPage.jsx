@@ -16,7 +16,7 @@ export const CartPage = () => {
   const getTotalPrice = () => {
     return Object.values(cartItems)
       .reduce(
-        (total, item) => total + item.quantity * item.data.sellingPrice,
+        (total, item) => total + item.quantity * item.data.price,
         0
       )
       .toFixed(2)

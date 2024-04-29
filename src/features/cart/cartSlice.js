@@ -8,8 +8,8 @@ const initialState = {
 
 export const addToCartAsync = createAsyncThunk(
   'cart/addToCartAsync',
-  async (cocktail, { getState, dispatch }) => {
-    dispatch(addToCart(cocktail))
+  async (card, { getState, dispatch }) => {
+    dispatch(addToCart(card))
     const userId = auth.currentUser.uid
     if (userId) {
       const cartRef = doc(db, 'carts', userId)
@@ -67,19 +67,19 @@ export const cartSlice = createSlice({
       state.items = {}
     },
     addToCart: (state, action) => {
-      const cocktail = action.payload
-      if (state.items[cocktail.idDrink]) {
-        state.items[cocktail.idDrink].quantity += 1
+      const card = action.payload
+      if (state.items[card.id]) {
+        state.items[card.id].quantity += 1
       } else {
-        state.items[cocktail.idDrink] = { data: cocktail, quantity: 1 }
+        state.items[card.id] = { data: card, quantity: 1 }
       }
     },
     removeFromCart: (state, action) => {
-      const cocktailId = action.payload
-      if (state.items[cocktailId] && state.items[cocktailId].quantity > 1) {
-        state.items[cocktailId].quantity -= 1
+      const cardId = action.payload
+      if (state.items[cardId] && state.items[cardId].quantity > 1) {
+        state.items[cardId].quantity -= 1
       } else {
-        delete state.items[cocktailId]
+        delete state.items[cardId]
       }
     },
     incrementQuantity: (state, action) => {
@@ -97,9 +97,9 @@ export const cartSlice = createSlice({
       }
     },
     deleteFromCart: (state, action) => {
-      const cocktailId = action.payload
-      if (state.items[cocktailId]) {
-        delete state.items[cocktailId]
+      const cardId = action.payload
+      if (state.items[cardId]) {
+        delete state.items[cardId]
       }
     },
   },
