@@ -15,6 +15,13 @@ class PokemonController extends Controller
         ], 200);
     }
 
+    public function findOne($id)
+    {
+        $pokemoncard = Pokemoncard::where('pokemon_id',$id)->first();
+
+        return response()->json(["pokemoncard" => $pokemoncard]);
+    }
+
     public function store(Request $request)
     {
         $pokemoncard = Pokemoncard::create(

@@ -13,6 +13,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 //add the following lines
 Route::get('pokemoncard', [PokemonController::class, 'index']);
+Route::get('pokemoncard/{id}', [PokemonController::class, 'findOne']);
 Route::post('pokemoncards', [PokemonController::class, 'store']);
 Route::post('pokemoncard/delete', [PokemonController::class, 'delete']);
 Route::post('pokemoncard/update', [PokemonController::class, 'complete']);

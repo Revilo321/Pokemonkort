@@ -17,9 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->integer('price');
             $table->string('image');
-            $table->string('type');
-            $table->integer('rarity');
-            $table->string('set');
+            $table->string('pokeset');
 
         });
     }
