@@ -38,7 +38,6 @@ export const PokemonDetails = () => {
     try {
       const response = await fetch(attachmentUrl)
       const data = await response.json()
-      console.log(data)
       return data[0].guid.rendered
     } catch (err) {
       console.error('Failed to fetch image', err)
@@ -52,7 +51,6 @@ export const PokemonDetails = () => {
         const response = await axios.get(
           `http://51.20.142.151/wp-json/wp/v2/posts/${id}`
         )
-        console.log(response)
         const post = response.data
         const imageAPI = post._links['wp:attachment'][0].href
         const imageUrl = await fetchImageUrl(imageAPI)

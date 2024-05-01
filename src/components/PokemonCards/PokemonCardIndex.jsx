@@ -12,7 +12,6 @@ export const Pokemoncardindex = (card) => {
   const [cards, setCards] = useState([])
   const [wpCards, setWpCards] = useState([])
   const testArray = [...cards, ...wpCards]
-  console.log(testArray)
 
   const handleAddToCart = (e) => {
     dispatch(addToCart(card))
@@ -23,7 +22,6 @@ export const Pokemoncardindex = (card) => {
     try {
       const response = await fetch(attachmentUrl)
       const data = await response.json()
-      console.log(data)
       return data[0].guid.rendered
     } catch (err) {
       console.error('Failed to fetch image', err)
