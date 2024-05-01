@@ -47,15 +47,13 @@ export const CartItem = ({ item }) => {
         <div className='flex items-center border-gray-200'>
           <button
             onClick={() => handleDecrement(item.data.id)}
-            className='cursor-pointer rounded-l bg-gray-200 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50'
-          >
+            className='cursor-pointer rounded-l bg-gray-200 py-1 px-3.5 duration-100 hover:bg-secondary hover:text-blue-50'>
             -
           </button>
           <p className='px-3'>{item.quantity}</p>
           <button
             onClick={() => handleIncrement(item.data.id)}
-            className='cursor-pointer rounded-r bg-gray-200 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50'
-          >
+            className='cursor-pointer rounded-r bg-gray-200 py-1 px-3 duration-100 hover:bg-secondary hover:text-blue-50'>
             +
           </button>
         </div>

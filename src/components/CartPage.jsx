@@ -15,10 +15,7 @@ export const CartPage = () => {
 
   const getTotalPrice = () => {
     return Object.values(cartItems)
-      .reduce(
-        (total, item) => total + item.quantity * item.data.price,
-        0
-      )
+      .reduce((total, item) => total + item.quantity * item.data.price, 0)
       .toFixed(2)
   }
 
@@ -35,7 +32,7 @@ export const CartPage = () => {
   }
 
   return (
-    <div className='min-h-screen bg-gray-100 pt-32'>
+    <div className='min-h-screen bg-main pt-32'>
       <div className='pt-5'>
         <div className='max-w-5xl mx-auto px-5'>
           <BackButton />
@@ -63,8 +60,7 @@ export const CartPage = () => {
             </div>
             <button
               onClick={() => handleCheckout()}
-              className='mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600'
-            >
+              className='mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600'>
               Check out
             </button>
             <AuthModal

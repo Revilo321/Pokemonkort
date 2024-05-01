@@ -23,8 +23,7 @@ export const CartDropdown = ({ setShowDropdown }) => {
           <div className='px-2 mx-auto container'>
             <button
               onClick={() => handleNavigation()}
-              className='mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600'
-            >
+              className='mt-6 w-full rounded-md bg-secondary py-1.5 font-medium hover:bg-tertiary'>
               Go to cart
             </button>
           </div>
