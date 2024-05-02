@@ -24,7 +24,6 @@ export const Pokemoncardindex = () => {
       )
       const laravelCards = laravelResponse.data.pokemoncard.map((card) => ({
         id: `laravel-${card.pokemon_id}`,
-        source: 'laravel',
         ...card,
       }))
 
@@ -36,7 +35,6 @@ export const Pokemoncardindex = () => {
         const imageUrl = await fetchImageUrl(imageAPI)
         return {
           id: `wordpress-${post.id}`,
-          source: 'wordpress',
           name: post.title.rendered,
           price: post.custom_fields.price[0],
           image: imageUrl,
